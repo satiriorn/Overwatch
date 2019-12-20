@@ -16,7 +16,6 @@ C:\Users\Frant\Desktop\StartupInfector-master\StartupInfector\StartupInfector\ob
 C:\Users\Frant\Desktop\StartupInfector-master\StartupInfector\StartupInfector\obj\Debug\StartupInfector.csproj.CoreCompileInputs.cache
 C:\Users\Frant\Desktop\StartupInfector-master\StartupInfector\StartupInfector\obj\Debug\StartupInfector.exe
 C:\Users\Frant\Desktop\StartupInfector-master\StartupInfector\StartupInfector\obj\Debug\StartupInfector.pdb
-C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\obj\Debug\Overwatch.csprojAssemblyReference.cache
 C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\obj\Debug\Overwatch.csproj.CoreCompileInputs.cache
 C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\bin\Debug\Overwatch.exe
 C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\bin\Debug\Overwatch.pdb

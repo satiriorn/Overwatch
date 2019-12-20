@@ -8,19 +8,11 @@ namespace Overwatch
     {
         public void Write(string inputText, bool newLine = false)
         {
-            if (newLine)
-                Console.WriteLine();
-
-            Console.WriteLine(inputText);
             saveLog(inputText, newLine);
         }
 
         public void Write(object inputText, bool newLine = false)
         {
-            if (newLine)
-                Console.WriteLine();
-
-            Console.WriteLine(inputText);
             saveLog(inputText.ToString(), newLine);
         }
 
