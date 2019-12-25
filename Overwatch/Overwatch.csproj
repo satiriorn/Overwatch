@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{2987C507-E714-43C0-9389-4A0C19E55898}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>Overwatch</RootNamespace>
     <AssemblyName>Overwatch</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>

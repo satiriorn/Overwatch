@@ -21,3 +21,4 @@ C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\bin\Debug\Overwatch.exe
 C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\bin\Debug\Overwatch.pdb
 C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\obj\Debug\Overwatch.exe
 C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\obj\Debug\Overwatch.pdb
+C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\obj\Debug\Overwatch.csprojAssemblyReference.cache
