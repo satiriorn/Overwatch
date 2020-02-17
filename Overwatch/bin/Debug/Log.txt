@@ -43,3 +43,23 @@
 [20.12.2019 22:25:32] 
  Приложение C:\Users\Frant\OpenVPN\bin\openvpn-gui.exe было заражено.
  Завершено.
+
+[30.12.2019 12:04:25] 
+ Невозможно запустить процесс, так как не указано имя файла.
+
+[30.12.2019 12:04:25] 
+ Приложение не находиться в C:\Users\Frant\AppData\Roaming\Overwatch\Overwatch.exe
+ Текущий каталог: C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\bin\Debug\Overwatch.exe
+ Выполняем установку...
+ Создаем папку
+
+[30.12.2019 12:04:25] 
+ Папка C:\Users\Frant\AppData\Roaming\Overwatch уже существует.
+
+[30.12.2019 12:04:25] 
+ Копия приложения в C:\Users\Frant\AppData\Roaming\Overwatch\Overwatch.exe - существует
+ Копия приложения в C:\Users\Frant\AppData\Roaming\Overwatch\Overwatch.exe - была запущена.
+
+[30.12.2019 12:04:25] 
+ Индекс за пределами диапазона. Индекс должен быть положительным числом, а его размер не должен превышать размер коллекции.
+Имя параметра: index
