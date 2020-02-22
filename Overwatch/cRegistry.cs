@@ -203,7 +203,6 @@ namespace Overwatch
                 temp.RunArguments = RegValueParsed[1];
 
                 temp.IsFileExists = File.Exists(temp.RunFilePath);
-                //temp.IsActiveProcess = cProcesses.IsFileActiveProcess(temp.RunFilePath);
                 temp.RegLocation = AutorunProgram.RegistryLocation.CurrentUser;
 
                 // Проверяем AddMask, если хоть одно условие будет выполнено,

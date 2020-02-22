@@ -9,7 +9,7 @@ namespace Overwatch
         public static bool IsFileActiveProcess(string pathFile)
         {
             string processName = string.Empty;
-            // Получаем название файла без расширения по заданному пути к файлу
+            // Get the name of the file without the extension for the given file path
             processName = Path.GetFileNameWithoutExtension(pathFile);
             foreach (Process proc in Process.GetProcessesByName(processName))
             {
@@ -26,7 +26,7 @@ namespace Overwatch
         {
             string processName = string.Empty;
 
-            // Получаем название файла без расширения по заданному пути к файлу
+            // Got a file name without extension at the given file path
             processName = Path.GetFileNameWithoutExtension(pathFile);
 
             foreach (Process proc in Process.GetProcessesByName(processName))
@@ -41,7 +41,7 @@ namespace Overwatch
                 }
                 else
                 {
-                    proc.Kill();
+                    proc.Kill(); 
                     return true;
                 }
             }

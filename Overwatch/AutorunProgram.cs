@@ -2,19 +2,19 @@
 {
     class AutorunProgram
     {
-        public string RegName { get; set; } // Название элемента в разделе реестра
+        public string RegName { get; set; } // The name of the item in the registry key
 
-        public string RegValue { get; set; }// Значение элемента в разделе реестра, может содержать путь к файлу и аргументы запуска
+        public string RegValue { get; set; }// The value of the item in the registry key may contain the path to the file and startup arguments
 
-        public string RunFilePath { get; set; }// Путь к файлу
+        public string RunFilePath { get; set; }//The path to the file
 
-        public string RunArguments { get; set; }// Аргументы запуска файла
+        public string RunArguments { get; set; }// File Launch Arguments
 
-        public bool IsFileExists { get; set; } = false;// Существует ли файл
+        public bool IsFileExists { get; set; } = false;// Is there a file
 
-        public bool IsActiveProcess { get { return cProcesses.IsFileActiveProcess(RunFilePath); } }// Запущен ли процесс файл
+        public bool IsActiveProcess { get { return cProcesses.IsFileActiveProcess(RunFilePath); } }// Is file process running
 
-        public RegistryLocation RegLocation { get; set; }// Базовый раздел реестра в котором находится этот элемент
+        public RegistryLocation RegLocation { get; set; }// The base registry key in which this item resides
 
         public enum RegistryLocation { LocalMachine, CurrentUser };
     }

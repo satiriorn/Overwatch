@@ -1,34 +1,19 @@
-C:\Users\Golden\Desktop\StartupInfector\StartupInfector\bin\Debug\StartupInfector.exe
-C:\Users\Golden\Desktop\StartupInfector\StartupInfector\bin\Debug\StartupInfector.pdb
-C:\Users\Golden\Desktop\StartupInfector\StartupInfector\obj\Debug\StartupInfector.csprojAssemblyReference.cache
-C:\Users\Golden\Desktop\StartupInfector\StartupInfector\obj\Debug\StartupInfector.csproj.CoreCompileInputs.cache
-C:\Users\Golden\Desktop\StartupInfector\StartupInfector\obj\Debug\StartupInfector.exe
-C:\Users\Golden\Desktop\StartupInfector\StartupInfector\obj\Debug\StartupInfector.pdb
-D:\CloudDesk\Other\#Pruducts\YouTube Project\StartupInfector\StartupInfector\bin\Debug\StartupInfector.exe
-D:\CloudDesk\Other\#Pruducts\YouTube Project\StartupInfector\StartupInfector\bin\Debug\StartupInfector.pdb
-D:\CloudDesk\Other\#Pruducts\YouTube Project\StartupInfector\StartupInfector\obj\Debug\StartupInfector.csproj.CoreCompileInputs.cache
-D:\CloudDesk\Other\#Pruducts\YouTube Project\StartupInfector\StartupInfector\obj\Debug\StartupInfector.exe
-D:\CloudDesk\Other\#Pruducts\YouTube Project\StartupInfector\StartupInfector\obj\Debug\StartupInfector.pdb
-D:\CloudDesk\Other\#Pruducts\YouTube Project\StartupInfector\StartupInfector\obj\Debug\StartupInfector.csprojAssemblyReference.cache
-C:\Users\Frant\Desktop\StartupInfector-master\StartupInfector\StartupInfector\bin\Debug\StartupInfector.exe
-C:\Users\Frant\Desktop\StartupInfector-master\StartupInfector\StartupInfector\bin\Debug\StartupInfector.pdb
-C:\Users\Frant\Desktop\StartupInfector-master\StartupInfector\StartupInfector\obj\Debug\StartupInfector.csprojAssemblyReference.cache
-C:\Users\Frant\Desktop\StartupInfector-master\StartupInfector\StartupInfector\obj\Debug\StartupInfector.csproj.CoreCompileInputs.cache
-C:\Users\Frant\Desktop\StartupInfector-master\StartupInfector\StartupInfector\obj\Debug\StartupInfector.exe
-C:\Users\Frant\Desktop\StartupInfector-master\StartupInfector\StartupInfector\obj\Debug\StartupInfector.pdb
-C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\obj\Debug\Overwatch.csproj.CoreCompileInputs.cache
-C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\bin\Debug\Overwatch.exe
-C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\bin\Debug\Overwatch.pdb
-C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\obj\Debug\Overwatch.exe
-C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\obj\Debug\Overwatch.pdb
-C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\obj\Debug\Overwatch.csprojAssemblyReference.cache
-C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\bin\Debug\Microsoft.Win32.TaskScheduler.dll
-C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\bin\Debug\Microsoft.Win32.TaskScheduler.xml
-C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\bin\Debug\de\Microsoft.Win32.TaskScheduler.resources.dll
-C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\bin\Debug\es\Microsoft.Win32.TaskScheduler.resources.dll
-C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\bin\Debug\fr\Microsoft.Win32.TaskScheduler.resources.dll
-C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\bin\Debug\it\Microsoft.Win32.TaskScheduler.resources.dll
-C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\bin\Debug\pl\Microsoft.Win32.TaskScheduler.resources.dll
-C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\bin\Debug\ru\Microsoft.Win32.TaskScheduler.resources.dll
-C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\bin\Debug\zh-CN\Microsoft.Win32.TaskScheduler.resources.dll
-C:\Users\Frant\Desktop\Overwatch\Overwatch\Overwatch\obj\Debug\Overwatch.csproj.CopyComplete
+C:\Users\Frant\Desktop\Overwatch\Overwatch\obj\Debug\Overwatch.csproj.CoreCompileInputs.cache
+C:\Users\Frant\Desktop\Overwatch\Overwatch\obj\Debug\Overwatch.csprojAssemblyReference.cache
+C:\Users\Frant\Desktop\Overwatch\Overwatch\obj\Debug\Interop.TaskScheduler.dll
+C:\Users\Frant\Desktop\Overwatch\Overwatch\obj\Debug\Overwatch.csproj.ResolveComReference.cache
+C:\Users\Frant\Desktop\Overwatch\Overwatch\bin\Debug\Overwatch.exe
+C:\Users\Frant\Desktop\Overwatch\Overwatch\bin\Debug\Overwatch.pdb
+C:\Users\Frant\Desktop\Overwatch\Overwatch\bin\Debug\Microsoft.Win32.TaskScheduler.dll
+C:\Users\Frant\Desktop\Overwatch\Overwatch\bin\Debug\Microsoft.Win32.TaskScheduler.xml
+C:\Users\Frant\Desktop\Overwatch\Overwatch\bin\Debug\de\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\Frant\Desktop\Overwatch\Overwatch\bin\Debug\es\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\Frant\Desktop\Overwatch\Overwatch\bin\Debug\fr\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\Frant\Desktop\Overwatch\Overwatch\bin\Debug\it\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\Frant\Desktop\Overwatch\Overwatch\bin\Debug\pl\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\Frant\Desktop\Overwatch\Overwatch\bin\Debug\ru\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\Frant\Desktop\Overwatch\Overwatch\bin\Debug\zh-CN\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\Frant\Desktop\Overwatch\Overwatch\bin\Debug\Interop.TaskScheduler.dll
+C:\Users\Frant\Desktop\Overwatch\Overwatch\obj\Debug\Overwatch.csproj.CopyComplete
+C:\Users\Frant\Desktop\Overwatch\Overwatch\obj\Debug\Overwatch.exe
+C:\Users\Frant\Desktop\Overwatch\Overwatch\obj\Debug\Overwatch.pdb
