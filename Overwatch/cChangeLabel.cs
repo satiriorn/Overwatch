@@ -10,7 +10,6 @@ namespace Overwatch
     {
         static Random random = new Random();
         static appLog Log = new appLog();
-        static string path_mycopy;
 
         private static List<AutorunProgram> autorunPrograms = new List<AutorunProgram>();
         private static string local_path_checkfile = Path.Combine(Path.GetDirectoryName(appConfing.MyFullPath), appConfing.checkFile);
@@ -70,7 +69,7 @@ namespace Overwatch
         {
             Log.Write("Выполняеться MoveApp", true);
 
-            path_mycopy = appConfing.MyFullPath + "_copy.exe";
+            string path_mycopy = appConfing.MyFullPath + "_copy.exe";
             File.Copy(appConfing.MyFullPath, path_mycopy, true);
             Process.Start(path_mycopy, string.Join(" ", args));
             Environment.Exit(0);
@@ -92,7 +91,6 @@ namespace Overwatch
                     Process.Start(path_originalApp, string.Join(" ", args));
                     File.Delete(local_path_checkfile);
                     File.Delete(bak_files[0]);
-                    File.Delete(path_mycopy);
                 }
             }
             catch(Exception ex) { Log.Write(ex.Message, true); }

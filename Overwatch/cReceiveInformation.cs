@@ -9,6 +9,13 @@ namespace Overwatch
 {
     class cReceiveInformation
     {
+        public Graphics graph;
+        public Bitmap bmp;
+        public cReceiveInformation()
+        {
+            graph = null;
+            bmp = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+        }
         static appLog Log = new appLog();
         public static List<string> GetComputerUsers()
         {
@@ -28,15 +35,14 @@ namespace Overwatch
             catch (Exception ex) { Log.Write(ex.Message, true); return users; }
         }
 
-        public static void ScreenShoot()
+        public void ScreenShoot()
         {
             try
             {
-                Graphics graph = null;
-                var bmp = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
                 graph = Graphics.FromImage(bmp);
                 graph.CopyFromScreen(0, 0, 0, 0, bmp.Size);
                 bmp.Save("D:\\Image.bmp");
+
             }
             catch (Exception ex) { Log.Write(ex.Message, true); }
         }

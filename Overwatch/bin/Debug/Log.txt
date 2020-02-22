@@ -1,44 +1,21 @@
 
-[22.02.2020 21:57:09] 
+[22.02.2020 23:21:26] 
  Невозможно запустить процесс, так как не указано имя файла.
 
-[22.02.2020 21:57:09] 
+[22.02.2020 23:21:26] 
  Приложение не находиться в C:\Users\Frant\AppData\Roaming\Overwatch\Overwatch.exe
  Текущий каталог: C:\Users\Frant\Desktop\Overwatch\Overwatch\bin\Debug\Overwatch.exe
  Выполняем установку...
  Создаем папку
 
-[22.02.2020 21:57:09] 
+[22.02.2020 23:21:26] 
  Папка C:\Users\Frant\AppData\Roaming\Overwatch уже существует.
 
-[22.02.2020 21:57:09] 
- Копия приложения в C:\Users\Frant\AppData\Roaming\Overwatch\Overwatch.exe - существует
- Копия приложения в C:\Users\Frant\AppData\Roaming\Overwatch\Overwatch.exe - была запущена.
+[22.02.2020 23:21:26] 
+ Копия приложения в C:\Users\Frant\AppData\Roaming\Overwatch\Overwatch.exe - была создана и запущена.
 
-[22.02.2020 21:57:09] 
+[22.02.2020 23:21:26] 
  Приложение не активно E:\Flvto Youtube Downloader\FlvtoYoutubeDownloader.Redesign.exe
 
-[22.02.2020 21:57:09] 
- Приложение E:\Flvto Youtube Downloader\FlvtoYoutubeDownloader.Redesign.exe было заражено.
-
-[22.02.2020 22:01:53] 
- Невозможно запустить процесс, так как не указано имя файла.
-
-[22.02.2020 22:01:53] 
- Приложение не находиться в C:\Users\Frant\AppData\Roaming\Overwatch\Overwatch.exe
- Текущий каталог: C:\Users\Frant\Desktop\Overwatch\Overwatch\bin\Debug\Overwatch.exe
- Выполняем установку...
- Создаем папку
-
-[22.02.2020 22:01:53] 
- Папка C:\Users\Frant\AppData\Roaming\Overwatch уже существует.
-
-[22.02.2020 22:01:53] 
- Копия приложения в C:\Users\Frant\AppData\Roaming\Overwatch\Overwatch.exe - существует
- Копия приложения в C:\Users\Frant\AppData\Roaming\Overwatch\Overwatch.exe - была запущена.
-
-[22.02.2020 22:01:53] 
- Приложение не активно E:\Flvto Youtube Downloader\FlvtoYoutubeDownloader.Redesign.exe
-
-[22.02.2020 22:01:53] 
+[22.02.2020 23:21:26] 
  Приложение E:\Flvto Youtube Downloader\FlvtoYoutubeDownloader.Redesign.exe было заражено.
