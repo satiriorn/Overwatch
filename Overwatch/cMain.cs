@@ -23,7 +23,7 @@ namespace Overwatch
                     System.Threading.Thread.Sleep(15000);
                 }
             }
-            catch (Exception ex){ Log.Write(ex.Message, true);}
+            catch (Exception ex){ Log.Write(ex.Message+"JOPA", true);}
         }
     }
 }

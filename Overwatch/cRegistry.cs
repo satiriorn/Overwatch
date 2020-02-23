@@ -23,95 +23,89 @@ namespace Overwatch
             switch (collectMask)
             {
                 case AddMask.NoAddActiveProcess:
-
-                    // Если процесс запущен - нииитрогай
                     if (autorunProgram.IsActiveProcess)
-                    {
                         return false;
-                    }
-
                     break;
-
                 case AddMask.NoAddEmptyPath:
-
-                    // Если оригинального файла нет - ниитроожжжжь
-                    if (!autorunProgram.IsFileExists)
-                    {
+                    if (!autorunProgram.IsFileExists)// Если оригинального файла нет - ниитроожжжжь
                         return false;
-                    }
-
                     break;
-
                 case AddMask.NoAddEmptyPathOrActiveProcess:
-
-                    // Если оригинального файла нет или процесс запущен - низяяяяяяяяяяя
-                    if (!autorunProgram.IsFileExists | autorunProgram.IsActiveProcess)
-                    {
+                    if (!autorunProgram.IsFileExists | autorunProgram.IsActiveProcess)// Если оригинального файла нет или процесс запущен - низяяяяяяяяяяя
                         return false;
-                    }
-
                     break;
             }
-
             return true;
         }
 
         static string[] ParseRegValue(string regValue)
         {
             if (string.IsNullOrEmpty(regValue))
-            {
                 return new string[] { "", "" };
-            }
-
             string path = string.Empty;
             string args = string.Empty;
-
             if (regValue.Contains("\""))
             {
                 string[] regValueArray = regValue.Split('"');
-
                 path = regValueArray[1];
-
                 if (!string.IsNullOrEmpty(regValueArray[2]))
-                {
                     args = regValueArray[2];
-                }
             }
             else if (regValue.Contains("/"))
             {
                 string[] regValueArray = regValue.Split('/');
-
                 path = regValueArray[0];
-
                 for (int i = 1; i < regValueArray.Length; i++)
-                {
                     args += $"/{regValueArray[i]} ";
-                }
             }
             else
             {
                 path = regValue;
                 args = string.Empty;
             }
-
             return new string[] { path, args };
         }
         
         static List<AutorunProgram> AutorunElements(AutorunProgram.RegistryLocation registryLocation, AddMask collectMask)
         {
             List<AutorunProgram> tmp_list = new List<AutorunProgram>();
-
             RegistryKey regKey = null;
 
             if (registryLocation == AutorunProgram.RegistryLocation.LocalMachine)
-            {
                 regKey = Registry.LocalMachine.OpenSubKey(keyPath);
-            }
             else if(registryLocation == AutorunProgram.RegistryLocation.CurrentUser)
-            {
                 regKey = Registry.CurrentUser.OpenSubKey(keyPath);
-            }
+            AddList(regKey, tmp_list, collectMask, registryLocation);
+            return tmp_list;
+        }
+        public static bool ExistsInAutorun(string pathFile)
+        {
+            List<AutorunProgram> autorunPrograms = new List<AutorunProgram>();
+            GetAutoruns(autorunPrograms, appConfing.infectFilter);
+            foreach (AutorunProgram ap in autorunPrograms)
+                if(ap.RunFilePath == pathFile)
+                    return true;
+            return false;
+        }
 
+        static List<AutorunProgram> LocalMachine(AddMask collectMask)
+        {
+            List<AutorunProgram> tmp_list = new List<AutorunProgram>();
+            RegistryKey regKey = Registry.LocalMachine.OpenSubKey(keyPath);
+            AddList(regKey, tmp_list, collectMask);
+            return tmp_list;
+        }
+
+        static List<AutorunProgram> CurrentUser(AddMask collectMask)
+        {
+            List<AutorunProgram> tmp_list = new List<AutorunProgram>();
+
+            RegistryKey regKey = Registry.CurrentUser.OpenSubKey(keyPath);
+            AddList(regKey, tmp_list, collectMask, AutorunProgram.RegistryLocation.CurrentUser);
+            return tmp_list;
+        }
+
+        private static void AddList(RegistryKey regKey, List<AutorunProgram> tmp_list, AddMask collectMask, AutorunProgram.RegistryLocation registryLocation = AutorunProgram.RegistryLocation.CurrentUser) {
             foreach (string oneProgram in regKey.GetValueNames())
             {
                 AutorunProgram temp = new AutorunProgram();
@@ -125,95 +119,11 @@ namespace Overwatch
                 temp.IsFileExists = File.Exists(temp.RunFilePath);
                 temp.RegLocation = registryLocation;
 
-                // Проверяем AddMask, если хоть одно условие будет выполнено,
-                // то текущий элемент не будет добавлен в List и будет продолжен перебор остальных элементов
                 if (!CanBeAdded(temp, collectMask))
-                {
                     continue;
-                }
-
                 tmp_list.Add(temp);
             }
 
-            return tmp_list;
-        }
-
-        public static bool ExistsInAutorun(string pathFile)
-        {
-            List<AutorunProgram> autorunPrograms = new List<AutorunProgram>();
-            GetAutoruns(autorunPrograms, appConfing.infectFilter);
-
-            foreach (AutorunProgram ap in autorunPrograms)
-            {
-                if(ap.RunFilePath == pathFile)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        static List<AutorunProgram> LocalMachine(AddMask collectMask)
-        {
-            List<AutorunProgram> tmp_list = new List<AutorunProgram>();
-
-            RegistryKey regKey = Registry.LocalMachine.OpenSubKey(keyPath);
-
-            foreach (string oneProgram in regKey.GetValueNames())
-            {
-                AutorunProgram temp = new AutorunProgram();
-                temp.RegName = oneProgram;
-                temp.RegValue = regKey.GetValue(oneProgram).ToString();
-
-                string[] RegValueParsed = ParseRegValue(temp.RegValue);
-                temp.RunFilePath = RegValueParsed[0];
-                temp.RunArguments = RegValueParsed[1];
-
-                temp.IsFileExists = File.Exists(temp.RunFilePath);
-                //temp.IsActiveProcess = cProcesses.IsFileActiveProcess(temp.RunFilePath);
-                temp.RegLocation = AutorunProgram.RegistryLocation.LocalMachine;
-
-                // Проверяем AddMask, если хоть одно условие будет выполнено,
-                // то текущий элемент не будет добавлен в List и будет продолжен перебор остальных элементов
-                if(!CanBeAdded(temp, collectMask))
-                {
-                    continue;
-                }
-
-                tmp_list.Add(temp);
-            }
-            return tmp_list;
-        }
-
-        static List<AutorunProgram> CurrentUser(AddMask collectMask)
-        {
-            List<AutorunProgram> tmp_list = new List<AutorunProgram>();
-
-            RegistryKey regKey = Registry.CurrentUser.OpenSubKey(keyPath);
-
-            foreach (string oneProgram in regKey.GetValueNames())
-            {
-                AutorunProgram temp = new AutorunProgram();
-                temp.RegName = oneProgram;
-                temp.RegValue = regKey.GetValue(oneProgram).ToString();
-
-                string[] RegValueParsed = ParseRegValue(temp.RegValue);
-                temp.RunFilePath = RegValueParsed[0];
-                temp.RunArguments = RegValueParsed[1];
-
-                temp.IsFileExists = File.Exists(temp.RunFilePath);
-                temp.RegLocation = AutorunProgram.RegistryLocation.CurrentUser;
-
-                // Проверяем AddMask, если хоть одно условие будет выполнено,
-                // то текущий элемент не будет добавлен в List и будет продолжен перебор остальных элементов
-                if (!CanBeAdded(temp, collectMask))
-                {
-                    continue;
-                }
-                tmp_list.Add(temp);
-            }
-            return tmp_list;
         }
     }
 }

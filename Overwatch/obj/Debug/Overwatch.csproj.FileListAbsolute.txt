@@ -16,3 +16,4 @@ C:\Users\Frant\Desktop\Overwatch\Overwatch\obj\Debug\Overwatch.csproj.CoreCompil
 C:\Users\Frant\Desktop\Overwatch\Overwatch\obj\Debug\Overwatch.csproj.CopyComplete
 C:\Users\Frant\Desktop\Overwatch\Overwatch\obj\Debug\Overwatch.exe
 C:\Users\Frant\Desktop\Overwatch\Overwatch\obj\Debug\Overwatch.pdb
+C:\Users\Frant\Desktop\Overwatch\Overwatch\obj\Debug\Overwatch.csprojAssemblyReference.cache
