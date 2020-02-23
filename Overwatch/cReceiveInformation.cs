@@ -1,12 +1,13 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
-using System.Collections.Generic;
-using System.Drawing;
-using System.DirectoryServices;
+using System.IO;
 using System.Windows.Forms;
+using System.Drawing;
 using System.Diagnostics;
-using System.Text;
+using System.Text.RegularExpressions;
+using System.Collections.Generic;
+using System.DirectoryServices;
+using System.Management;
 
 namespace Overwatch
 {
@@ -22,7 +23,7 @@ namespace Overwatch
             bmp = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
             Log = new appLog();
         }
-        
+
         public static List<string> GetComputerUsers()
         {
             List<string> users = new List<string>();
@@ -48,13 +49,8 @@ namespace Overwatch
                 graph = Graphics.FromImage(bmp);
                 graph.CopyFromScreen(0, 0, 0, 0, bmp.Size);
                 bmp.Save("D:\\Image.bmp");
-
             }
             catch (Exception ex) { Log.Write(ex.Message, true); }
-        }
-        public static void Show(List<string> Users)
-        {
-            foreach (var a in Users) { Console.WriteLine(a.ToString()); }
         }
         public static string TrimLastCharacter(string str)
         {
@@ -64,7 +60,7 @@ namespace Overwatch
                 return str.TrimEnd(str[str.Length - 1]);
         }
 
-        protected static List<string> AllProcess()
+        private static List<string> GeneralProcess()
         {
             Process[] procList = Process.GetProcesses();
             List<string> processUse = new List<string>();
@@ -84,6 +80,22 @@ namespace Overwatch
             CreateAndUpdateDate(ProcessName, "D:\\GeneralApplication.txt");
             return processUse;
         }
+        private static void LocalProcess()
+        {
+            var Users = GetComputerUsers();
+            string UsersName = "";
+            foreach (var a in Users) { UsersName += a.ToString() + "|"; UsersName.Replace(" ", ","); }
+            UsersName += "Administrator";
+            string name = System.Environment.GetEnvironmentVariable("COMPUTERNAME");
+            while (true)
+            {
+                Process.GetProcesses().Where(p => new Regex(UsersName).IsMatch(p.MainWindowTitle)).ToList().ForEach(p => CreateAndUpdateDate(p.ProcessName + " ", "D:\\UsersApplication.txt"));
+                System.Threading.Thread.Sleep(5000);
+            }
+        }
 
+        public void Overview() {
+            GeneralProcess();
+        }
     }
 }

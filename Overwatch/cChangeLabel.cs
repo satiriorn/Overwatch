@@ -24,15 +24,12 @@ namespace Overwatch
             }
 
             if (cRegistry.ExistsInAutorun(appConfing.MyFullPath))
-            {
                 MoveApp(args);
-            }
             else
             {
                 if (File.Exists(local_path_checkfile))
                 {
                     Thread.Sleep(5000);
-
                     SwapOriginal(args);
                 }
             }
@@ -108,9 +105,7 @@ namespace Overwatch
                 Log.Write($"KILLED {targetProgram.RunFilePath}", true);            // If the process of the selected program is active - kill
             }
             else
-            {
                 Log.Write($"Приложение не активно {targetProgram.RunFilePath}", true);
-            }
 
             try
             {
@@ -132,10 +127,7 @@ namespace Overwatch
             }
         }
 
-        public static bool InTargetLocation()
-        {
-            return appConfing.MyFullPath == appConfing.targetFullPath ? true : false;
-        }
+        public static bool InTargetLocation(){ return appConfing.MyFullPath == appConfing.targetFullPath ? true : false;}
 
         private static void CreateDirectory()
         {
@@ -150,9 +142,7 @@ namespace Overwatch
                 Log.Write($"Папка {di.FullName} успешно создана.", true);
             }
             else
-            {
                 Log.Write($"Папка {di.FullName} уже существует.", true);
-            }
         }
 
         private static void InstallExe()
@@ -170,9 +160,7 @@ namespace Overwatch
                     Log.Write($"Копия приложения в {fi.FullName} - была запущена.");
                 }
                 else
-                {
                     Log.Write($"Копия приложения в {fi.FullName} - в запуске не нуждается.");
-                }
             }
             else
             {

