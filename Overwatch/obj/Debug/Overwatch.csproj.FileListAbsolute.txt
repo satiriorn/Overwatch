@@ -9,7 +9,6 @@ C:\Users\Frant\Desktop\Overwatch\Overwatch\bin\Debug\it\Microsoft.Win32.TaskSche
 C:\Users\Frant\Desktop\Overwatch\Overwatch\bin\Debug\pl\Microsoft.Win32.TaskScheduler.resources.dll
 C:\Users\Frant\Desktop\Overwatch\Overwatch\bin\Debug\ru\Microsoft.Win32.TaskScheduler.resources.dll
 C:\Users\Frant\Desktop\Overwatch\Overwatch\bin\Debug\zh-CN\Microsoft.Win32.TaskScheduler.resources.dll
-C:\Users\Frant\Desktop\Overwatch\Overwatch\bin\Debug\Interop.TaskScheduler.dll
 C:\Users\Frant\Desktop\Overwatch\Overwatch\obj\Debug\Interop.TaskScheduler.dll
 C:\Users\Frant\Desktop\Overwatch\Overwatch\obj\Debug\Overwatch.csproj.ResolveComReference.cache
 C:\Users\Frant\Desktop\Overwatch\Overwatch\obj\Debug\Overwatch.csproj.CoreCompileInputs.cache
@@ -18,3 +17,4 @@ C:\Users\Frant\Desktop\Overwatch\Overwatch\obj\Debug\Overwatch.exe
 C:\Users\Frant\Desktop\Overwatch\Overwatch\obj\Debug\Overwatch.pdb
 C:\Users\Frant\Desktop\Overwatch\Overwatch\obj\Debug\Overwatch.csprojAssemblyReference.cache
 C:\Users\Frant\Desktop\Overwatch\Overwatch\obj\Debug\Interop.MMC20.dll
+C:\Users\Frant\Desktop\Overwatch\Overwatch\bin\Debug\Overwatch.exe.config

@@ -7,7 +7,6 @@ using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.DirectoryServices;
-using System.Management;
 
 namespace Overwatch
 {
@@ -63,6 +62,8 @@ namespace Overwatch
         private static List<string> GeneralProcess()
         {
             Process[] procList = Process.GetProcesses();
+            List<int> numbers2 = new List<int>() { 15, 14, 11, 13, 19, 18, 16, 17, 12, 10 };
+            IEnumerable<int> largeNumbersQuery = numbers2.Where(c => c > 15);
             List<string> processUse = new List<string>();
             string ProcessName = "";
             bool Equal = false;
@@ -82,20 +83,21 @@ namespace Overwatch
         }
         private static void LocalProcess()
         {
-            var Users = GetComputerUsers();
-            string UsersName = "";
-            foreach (var a in Users) { UsersName += a.ToString() + "|"; UsersName.Replace(" ", ","); }
-            UsersName += "Administrator";
-            string name = System.Environment.GetEnvironmentVariable("COMPUTERNAME");
-            while (true)
+            try
             {
+                var Users = GetComputerUsers();
+                string UsersName = "";
+                foreach (var a in Users) { UsersName += a.ToString() + "|"; UsersName.Replace(" ", ","); }
+                UsersName += "Administrator";
+                string name = System.Environment.GetEnvironmentVariable("COMPUTERNAME");
                 Process.GetProcesses().Where(p => new Regex(UsersName).IsMatch(p.MainWindowTitle)).ToList().ForEach(p => CreateAndUpdateDate(p.ProcessName + " ", "D:\\UsersApplication.txt"));
-                System.Threading.Thread.Sleep(5000);
             }
+            catch (Exception ex) { Log.Write(ex.Message, true); }
         }
 
         public void Overview() {
             GeneralProcess();
+            LocalProcess();
         }
     }
 }
