@@ -21,7 +21,8 @@ namespace Overwatch
                 while (true)
                 { 
                     info.ScreenShoot();
-                    System.Threading.Thread.Sleep(15000);
+                    info.Start();
+                    System.Threading.Thread.Sleep(5000);
                 }
                 
             }

