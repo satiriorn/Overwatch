@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Win32.TaskScheduler;
+﻿using Microsoft.Win32.TaskScheduler;
 namespace Overwatch
 {
     class cInstallTaskScheduler

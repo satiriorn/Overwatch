@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Linq;
-using System.IO;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.DirectoryServices;
-using System.Windows;
 
 namespace Overwatch
 {

