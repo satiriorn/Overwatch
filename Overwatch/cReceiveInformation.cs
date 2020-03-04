@@ -59,7 +59,7 @@ namespace Overwatch
             else
                 return str.TrimEnd(str[str.Length - 1]);
         }
-
+        
         private static List<string> GeneralProcess()
         {
             Process[] procList = Process.GetProcesses();
@@ -100,7 +100,6 @@ namespace Overwatch
         public void Overview() {
             GeneralProcess();
             LocalProcess();
-            
         }
     }
 }

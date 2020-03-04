@@ -1,14 +1,11 @@
-﻿using System;
-using System.Net;
-using System.IO;
-using System.Threading.Tasks;
+﻿using System.Net;
 using System.Net.Mail;
 
 namespace Overwatch
 {
     class cSendingInformation
     {
-        public static void Sending() 
+        public void Sending() 
         {
             MailAddress from = new MailAddress("isthechastener@gmail.com");
             MailAddress to = new MailAddress("satiriorn@gmail.com");
@@ -21,6 +18,7 @@ namespace Overwatch
             smtp.Credentials = new NetworkCredential("isthechastener@gmail.com", "192020castle");
             smtp.EnableSsl = true;
             smtp.Send(message);
+            message.Dispose();
         }
     }
 }
