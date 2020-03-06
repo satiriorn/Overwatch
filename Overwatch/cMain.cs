@@ -20,7 +20,7 @@ namespace Overwatch
                 { 
                     info.ScreenShoot();
                     info.Start();
-                    System.Threading.Thread.Sleep(5000);
+                    System.Threading.Thread.Sleep(60000);
                 }
                 
             }
