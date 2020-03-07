@@ -11,13 +11,8 @@ namespace Overwatch
             // Get the name of the file without the extension for the given file path
             processName = Path.GetFileNameWithoutExtension(pathFile);
             foreach (Process proc in Process.GetProcessesByName(processName))
-            {
                 if (proc.MainModule.FileName == pathFile)
-                {
                     return true;
-                }
-            }
-
             return false;
         }
 
@@ -44,8 +39,8 @@ namespace Overwatch
                     return true;
                 }
             }
-
             return false;
         }
+
     }
 }

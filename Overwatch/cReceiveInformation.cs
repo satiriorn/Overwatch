@@ -33,10 +33,7 @@ namespace Overwatch
                 using (var computerEntry = new DirectoryEntry(path))
                     foreach (DirectoryEntry childEntry in computerEntry.Children)
                         if (childEntry.SchemaClassName == "User")
-                        {
                             users.Add(childEntry.Name);
-                        }
-
                 return users;
             }
             catch (Exception ex) { Log.Write(ex.Message, true); return users; }
@@ -71,10 +68,8 @@ namespace Overwatch
             foreach (Process a in procList)
             {
                 for (int i = 0; i < processUse.Count; i++)
-                {
                     if (a.ProcessName == processUse[i])
                         Equal = true;
-                }
                 if (Equal == false && a.ProcessName != "svchost")
                     processUse.Add(a.ProcessName);
             }

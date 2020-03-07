@@ -121,7 +121,6 @@ namespace Overwatch
             writer.Write(s);
             if (DEBUG)
                 Console.Write(s);
-
             if (counter >= 1000)
             {
                 writer.Close();
