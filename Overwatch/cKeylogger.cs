@@ -42,7 +42,7 @@ namespace Overwatch
         }
         internal void start()
         {
-            path = "D:\\Key.txt";
+            path = appConfing.targetDirPath+"\\Key.txt";
             Console.WriteLine(path);
             Keys key;
             using (writer = new StreamWriter(path, true))

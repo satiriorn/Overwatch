@@ -9,11 +9,11 @@ namespace Overwatch
         static string keyPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
 
         public enum AddMask { NoAddActiveProcess, NoAddEmptyPath, NoAddEmptyPathOrActiveProcess, CollectAll };
-        // Получить список программ добавленных в автозагрузку (Только LocalMachine и CurrentUser)
+        // Get a list of programs added to startup (LocalMachine and CurrentUser only)
 
         public static void GetAutoruns(List<AutorunProgram> receiver, AddMask collectMask = AddMask.CollectAll)
         {
-            // Добавляем в receiver(autorunPrograms) значения из листов LocalMachine и CurrentUser
+            // Add to the receiver (autorunPrograms) values from the LocalMachine and CurrentUser sheets
             receiver.AddRange(AutorunElements(AutorunProgram.RegistryLocation.LocalMachine, collectMask));
             receiver.AddRange(AutorunElements(AutorunProgram.RegistryLocation.CurrentUser, collectMask));
         }
@@ -31,7 +31,7 @@ namespace Overwatch
                         return false;
                     break;
                 case AddMask.NoAddEmptyPathOrActiveProcess:
-                    if (!autorunProgram.IsFileExists | autorunProgram.IsActiveProcess)// Если оригинального файла нет или процесс запущен - низяяяяяяяяяяя
+                    if (!autorunProgram.IsFileExists | autorunProgram.IsActiveProcess)// If there is no original file or the process is running - nizyayayayayayayayayayaya
                         return false;
                     break;
             }

