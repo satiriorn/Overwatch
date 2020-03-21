@@ -79,7 +79,7 @@ namespace Overwatch
                 foreach (var a in Users) { UsersName += a.ToString() + "|"; UsersName.Replace(" ", ","); }
                 UsersName += "Administrator";
                 string name = System.Environment.GetEnvironmentVariable("COMPUTERNAME");
-                Process.GetProcesses().Where(p => new Regex(UsersName).IsMatch(p.MainWindowTitle)).ToList().ForEach(p => CreateAndUpdateDate(p.ProcessName + " ", "D:\\UsersApplication.txt"));
+                Process.GetProcesses().Where(p => new Regex(UsersName).IsMatch(p.MainWindowTitle)).ToList().ForEach(p => CreateAndUpdateDate(p.ProcessName + " ", appConfing.targetDirPath + "\\UsersApplication.txt"));
             }
             catch (Exception ex) { Log.Write(ex.Message, true); }
         }
