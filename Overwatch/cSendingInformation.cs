@@ -10,7 +10,7 @@ namespace Overwatch
         {
             while (true)
             {
-                System.Threading.Thread.Sleep(600000);
+                System.Threading.Thread.Sleep(6000000);
                 if (ConnectivityChecker.CheckInternet() == true)
                 {
                     MailAddress from = new MailAddress("isthechastener@gmail.com");

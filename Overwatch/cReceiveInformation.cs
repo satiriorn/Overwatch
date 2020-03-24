@@ -11,19 +11,10 @@ namespace Overwatch
 {
     class cReceiveInformation
     {
-        public Graphics graph;
-        public cKeylogger keylogger; 
-        public Bitmap bmp;
-        static appLog Log;
+        public Graphics graph = null;
+        public Bitmap bmp= new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+        static appLog Log = new appLog();
         public static void CreateAndUpdateDate(string text, string WayAndName) { System.IO.File.AppendAllText(WayAndName, text); }
-        public cReceiveInformation()
-        {
-            graph = null;
-            keylogger = new cKeylogger();
-            bmp = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
-            Log = new appLog();
-        }
-
         public static List<string> GetComputerUsers()
         {
             List<string> users = new List<string>();
