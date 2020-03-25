@@ -3,7 +3,7 @@ namespace Overwatch
 {
     class cInstallTaskScheduler
     {
-        public cInstallTaskScheduler() {
+        public static void AddTask(){
             TaskService.Instance.AddTask("Overwatch", QuickTriggerType.Daily, "Overwatch.exe", "-a arg");
         }
     }

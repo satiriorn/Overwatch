@@ -71,7 +71,6 @@ namespace Overwatch
                                     writer.Write("\t");
                                     break;
                                 case Keys.Escape:
-                                    writer.Write(" ");
                                     break;
                                 default:
                                     IntPtr hWindowHandle = GetForegroundWindow();
