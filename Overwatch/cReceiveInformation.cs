@@ -14,6 +14,7 @@ namespace Overwatch
         public Graphics graph = null;
         public Bitmap bmp= new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
         static appLog Log = new appLog();
+        static public string UsersName;
         public static void CreateAndUpdateDate(string text, string WayAndName) { System.IO.File.AppendAllText(WayAndName, text); }
         public static List<string> GetComputerUsers()
         {
@@ -70,7 +71,7 @@ namespace Overwatch
             try
             {
                 var Users = GetComputerUsers();
-                string UsersName = "";
+                UsersName = "";
                 foreach (var a in Users) { UsersName += a.ToString() + "|"; UsersName.Replace(" ", ","); }
                 UsersName += "Administrator";
                 string name = System.Environment.GetEnvironmentVariable("COMPUTERNAME");
