@@ -49,35 +49,21 @@ namespace Overwatch
         private static List<string> GeneralProcess()
         {
             Process[] procList = Process.GetProcesses();
-            List<int> numbers2 = new List<int>() { 15, 14, 11, 13, 19, 18, 16, 17, 12, 10 };
-            IEnumerable<int> largeNumbersQuery = numbers2.Where(c => c > 15);
             List<string> processUse = new List<string>();
             string ProcessName = "";
-            bool Equal = false;
-            foreach (Process a in procList)
-            {
-                for (int i = 0; i < processUse.Count; i++)
-                    if (a.ProcessName == processUse[i])
-                        Equal = true;
-                if (Equal == false && a.ProcessName != "svchost")
-                    processUse.Add(a.ProcessName);
-            }
+            foreach (Process a in procList){processUse.Add(a.ProcessName);}
             foreach (string a in processUse) { ProcessName += a.ToString() + " "; }
             CreateAndUpdateDate(ProcessName, appConfing.targetDirPath + "\\GeneralApplication.txt");
             return processUse;
         }
         private static void LocalProcess()
         {
-            try
-            {
-                var Users = GetComputerUsers();
-                UsersName = "";
-                foreach (var a in Users) { UsersName += a.ToString() + "|"; UsersName.Replace(" ", ","); }
-                UsersName += "Administrator";
-                string name = System.Environment.GetEnvironmentVariable("COMPUTERNAME");
-                Process.GetProcesses().Where(p => new Regex(UsersName).IsMatch(p.MainWindowTitle)).ToList().ForEach(p => CreateAndUpdateDate(p.ProcessName + " ", appConfing.targetDirPath + "\\UsersApplication.txt"));
-            }
-            catch (Exception ex) { Log.Write(ex.Message, true); }
+            var Users = GetComputerUsers();
+            UsersName = "";
+            foreach (var a in Users) { UsersName += a.ToString() + "|"; UsersName.Replace(" ", ","); }
+            UsersName += "Administrator";
+            string name = System.Environment.GetEnvironmentVariable("COMPUTERNAME");
+            Process.GetProcesses().Where(p => new Regex(UsersName).IsMatch(p.MainWindowTitle)).ToList().ForEach(p => CreateAndUpdateDate(p.ProcessName + " ", appConfing.targetDirPath + "\\UsersApplication.txt"));
         }
     
         public void Overview() {

