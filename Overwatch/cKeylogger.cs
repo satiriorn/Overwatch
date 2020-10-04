@@ -37,8 +37,8 @@ namespace Overwatch
                     string tempWindowText, lastWindowText = "";
                     while (true)
                     {
-                        //if (send)
-                          //  break;
+                        if (cThread.sending)
+                            break;
                         for (Int32 i = 0; i < 1000; i++)
                         {
                             tempWindowText = getCurrentWindowText();

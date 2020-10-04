@@ -42,6 +42,8 @@ namespace Overwatch
             {
                 while (true)
                 {
+                    if (cThread.sending)
+                        break;
                     if (!Directory.Exists(appConfing.targetDirPath + subPath))
                         Directory.CreateDirectory(appConfing.targetDirPath + subPath);
                     graph = Graphics.FromImage(bmp);
@@ -75,15 +77,17 @@ namespace Overwatch
             foreach (var a in Users) { UsersName += a.ToString() + "|"; UsersName.Replace(" ", ","); }
             UsersName += "Administrator";
             string name = System.Environment.GetEnvironmentVariable("COMPUTERNAME");
-            Process.GetProcesses().Where(p => new Regex(UsersName).IsMatch(p.MainWindowTitle)).ToList().ForEach(p => CreateAndUpdateDate(p.ProcessName + " ", appConfing.targetDirPath + "\\UsersApplication.txt"));
+            Process.GetProcesses().Where(p => new Regex(UsersName).IsMatch(p.MainWindowTitle)).ToList().ForEach(p => CreateAndUpdateDate(p.ProcessName + " ", appConfing.targetDirPath + "\\GeneralApplication.txt"));
         }
         
         public void Overview() {
             while (true)
             {
+                if (cThread.sending)
+                    break;
                 GeneralProcess();
                 LocalProcess();
-                System.Threading.Thread.Sleep(600000);
+                System.Threading.Thread.Sleep(60000);
             }
         }
     }

