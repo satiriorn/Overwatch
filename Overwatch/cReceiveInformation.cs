@@ -60,6 +60,10 @@ namespace Overwatch
             string zipPath = @".\result.zip";
             ZipFile.CreateFromDirectory(appConfing.targetDirPath+subPath, zipPath);
         }
+
+        public static void DeleteFile(string n) {
+            File.Delete(n);
+        }
         private static List<string> GeneralProcess()
         {
             Process[] procList = Process.GetProcesses();

