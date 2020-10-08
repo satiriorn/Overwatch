@@ -50,15 +50,23 @@ namespace Overwatch
                     graph.CopyFromScreen(0, 0, 0, 0, bmp.Size);
                     bmp.Save(appConfing.targetDirPath+subPath + String.Format("\\Image{0}.bmp", CountImage.ToString()));
                     CountImage++;
-                    System.Threading.Thread.Sleep(30000);
+                    System.Threading.Thread.Sleep(45000);
                 }
             }
             catch (Exception ex) { Log.Write(ex.Message, true); }
         }
         public static void CompressionFile()
         {
-            string zipPath = @".\result.zip";
-            ZipFile.CreateFromDirectory(appConfing.targetDirPath+subPath, zipPath);
+            try
+            {
+                string zipPath = "\\result.zip";
+                ZipFile.CreateFromDirectory(appConfing.targetDirPath + subPath, appConfing.targetDirPath + zipPath);
+            }
+            catch (Exception ex)
+            {
+                DeleteFile(appConfing.targetDirPath + "\\result.zip");
+                CompressionFile();
+            }
         }
 
         public static void DeleteFile(string n) {
