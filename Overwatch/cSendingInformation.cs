@@ -16,7 +16,7 @@ namespace Overwatch
             {
                 while (true)
                 {
-                    System.Threading.Thread.Sleep(12000000);
+                    System.Threading.Thread.Sleep(8000000);
                     
                     if (ConnectivityChecker.CheckInternet() == true)
                     {
